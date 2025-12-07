@@ -27,16 +27,15 @@ local Config = {}
 --- Default slots configuration
 ---@type table<string, Slot[]>
 Config.defaultSlots = {
-    ['back'] = {
-        { bone = 24818, pos = vec3(0.09, -0.16, 0.12),  rot = vec3(0.0, 180.0, 0.0) },
-        { bone = 24818, pos = vec3(0.09, -0.16, 0.00),  rot = vec3(0.0, 180.0, 0.0) },
-        { bone = 24818, pos = vec3(0.09, -0.16, -0.12), rot = vec3(0.0, 180.0, 0.0) }
+    ['back2'] = {
+        { bone = 24818, pos = vec3(0.00, 0.00, 0.00), rot = vec3(0.00, 0.00, 0.00) }
     },
-    -- ['another group'] = { -- add as many slot groups as you like for different types of items
-    --     { bone = 24818, pos = vec3(0.09, -0.16, 0.12),  rot = vec3(0.0, 180.0, 0.0) },
-    --     { bone = 24818, pos = vec3(0.09, -0.16, 0.00),  rot = vec3(0.0, 180.0, 0.0) },
-    --     { bone = 24818, pos = vec3(0.09, -0.16, -0.12), rot = vec3(0.0, 180.0, 0.0) }
-    -- },
+    ['front'] = { -- add as many slot groups as you like for different types of items
+        { bone = 24818, pos = vec3(-0.075, 0.210, -0.090), rot = vec3(162.0, 130.0, 6.0) }
+    },
+    ['belt'] = {
+        { bone = 11816, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 0.0, 0.0) }
+    }
 }
 
 --- these vehicle classes will be allowed to display all attached back items
@@ -49,41 +48,111 @@ Config.allowedVehicleClasses = {
 --- Back items configuration
 ---@type table<string, BackItem>
 Config.BackItems = {
-    ['WEAPON_CARBINERIFLE'] = {
+    -- RS GUNS
+    ['WEAPON_SMG'] = {
         prio = 3,
-        group = 'back',
-        visibility = 1
+        group = 'front',
     },
-    ['WEAPON_SNIPERRIFLE'] = {
+    ['WEAPON_COMBATPDW'] = {
         prio = 3,
-        group = 'back'
+        group = 'front',
     },
-    ['WEAPON_COMPACTRIFLE'] = {
-        prio = 2,
-        group = 'back'
+    ['WEAPON_PUMPSHOTGUN_MK2'] = {
+        prio = 3,
+        group = 'front',
     },
-    ['WEAPON_MG'] = {
-        prio = 4,
-        group = 'back'
+    ['WEAPON_SPECIALCARBINE_MK2'] = {
+        prio = 3,
+        group = 'front',
     },
+    ['WEAPON_CARBINERIFLE_MK2'] = {
+        prio = 3,
+        group = 'front',
+    },
+    -- RS MELEE GUNS
     ['WEAPON_BAT'] = {
         prio = 1,
-        group = 'back',
+        group = 'back2',
         customPos = {
-            pos = { x = 0.4, y = -0.15 },
-            rot = { y = 270.0 }
+            pos = vec3(0.360, -0.120, 0.080),
+            rot = vec3(0.0, -90.0, 6.0)
         }
     },
-    ['cone'] = {
+    ['WEAPON_HATCHET'] = {
         prio = 1,
-        ignoreLimits = true,
-        model = `prop_roadcone02a`,
+        group = 'back2',
         customPos = {
-            bone = 12844,
-            pos = vec3(0.06, 0.0, 0.0),
-            rot = vec3(0.0, 90.0, 0.0)
+            pos = vec3(0.360, -0.120, 0.080),
+            rot = vec3(0.0, -90.0, 6.0)
         }
-    }
+    },        
+    ['WEAPON_POOLCUE'] = {
+        prio = 1,
+        group = 'back2',
+        customPos = {
+            pos = vec3(0.360, -0.115, 0.080),
+            rot = vec3(0.0, -90.0, 6.0)
+        }
+    },
+    ['WEAPON_GOLFCLUB'] = {
+        prio = 1,
+        group = 'back2',
+        customPos = {
+            pos = vec3(0.360, -0.110, 0.080),
+            rot = vec3(0.0, -90.0, 6.0)
+        }
+    },
+    ['WEAPON_KATANA'] = {
+        prio = 1,
+        group = 'back2',
+        customPos = {
+            pos = vec3(0.370, -0.150, 0.100),
+            rot = vec3(30.0, -90.0, 3.0)
+        }
+    },
+    ['WEAPON_PERFORATOR'] = {
+        prio = 1,
+        group = 'back2',
+        customPos = {
+            pos = vec3(0.470, -0.120, 0.130),
+            rot = vec3(0.0, -92.0, 6.0)
+        }
+    },
+    ['WEAPON_HUNTINGRIFLE'] = {
+        prio = 1,
+        group = 'back2',
+        customPos = {
+            pos = vec3(-0.030, -0.190, 0.060),
+            rot = vec3(0.0, 0.0, 0.0)
+        }
+    },
+    -- BELT
+    ['WEAPON_PEPPERSPRAY'] = {
+        prio = 1,
+        group = 'belt',
+        customPos = {
+            --pos = vec3(-0.030, -0.150, 0.150),
+            --rot = vec3(165.0, -90.0, 0.0)
+            pos = vec3(-0.050, -0.160, 0.150),
+            rot = vec3(165.0, -90.0, 0.0)
+        }
+    },
+    ['WEAPON_DAGGER'] = {
+        prio = 2,
+        group = 'belt',
+        customPos = {
+            pos = vec3(0.010, 0.020, -0.210),
+            rot = vec3(96.0, 0.0, 90.0)
+        }
+    },
+    ['WEAPON_MACHETE'] = {
+        prio = 1,
+        group = 'belt',
+        customPos = {
+            pos = vec3(0.010, 0.020, -0.210),
+            rot = vec3(96.0, 0.0, 90.0)
+        }
+    },
 }
 
 return Config

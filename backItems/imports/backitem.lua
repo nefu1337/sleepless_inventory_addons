@@ -60,7 +60,7 @@ function BackItem:attach()
     local pos = item.pos
     local rot = item.rot
 
-    local bone = item.customPos?.bone
+    local bone = item.bone or 24818
 
     if not object or not DoesEntityExist(object) then return end
 
@@ -70,7 +70,7 @@ function BackItem:attach()
     AttachEntityToEntity(
         object,
         ped,
-        GetPedBoneIndex(ped, bone or 24818),
+        GetPedBoneIndex(ped, bone),
         pos.x,
         pos.y,
         pos.z,
